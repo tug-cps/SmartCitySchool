@@ -1,4 +1,4 @@
-timestamp,electricity_usage,Graz Temperature [2 m elevation corrected],Graz Shortwave Radiation,Graz Direct Shortwave Radiation,Graz Diffuse Shortwave Radiation,Graz Relative Humidity [2 m],is_schoolday,day,month,year,hour
+timestamp,electricity,Graz Temperature [2 m elevation corrected],Graz Shortwave Radiation,Graz Direct Shortwave Radiation,Graz Diffuse Shortwave Radiation,Graz Relative Humidity [2 m],is_schoolday,day,month,year,hour
 2021-06-14 00:15:00,3.29,4.32137,0.0,0.0,0.0,73.0,1,14,6,2021,0
 2021-06-14 00:30:00,3.28,4.306369925,0.0,0.0,0.0,71.0,1,14,6,2021,0
 2021-06-14 00:45:00,3.25,4.291369850000001,0.0,0.0,0.0,69.0,1,14,6,2021,0
