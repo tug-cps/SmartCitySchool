@@ -113,7 +113,7 @@ def get_is_schoolday(date_arg):
 def preprocess(data_path,feature):
 
     #Loading weather data
-    graz_weather_df = pd.read_csv("../../data/graz_weather.csv",delimiter=',',header=9,encoding='UTF-8')
+    graz_weather_df = pd.read_csv("../data/graz_weather.csv",delimiter=',',header=9,encoding='UTF-8')
     graz_weather_df = graz_weather_df[['timestamp', 'Graz Temperature [2 m elevation corrected]','Graz Shortwave Radiation', \
     'Graz Direct Shortwave Radiation', 'Graz Diffuse Shortwave Radiation','Graz Relative Humidity [2 m]']]
 
@@ -142,11 +142,13 @@ def preprocess(data_path,feature):
        'Graz Shortwave Radiation', 'Graz Direct Shortwave Radiation',
        'Graz Diffuse Shortwave Radiation', 'Graz Relative Humidity [2 m]']].resample('15T').interpolate()
 
-    graz_weather_df_upsampled.reset_index(drop = True, inplace = True)
+    #graz_weather_df_upsampled.reset_index(drop = True, inplace = True)
     df.reset_index(drop = True, inplace = True)
-
-    df = pd.merge(df,graz_weather_df_upsampled,how='inner',left_index=True, right_index=True)
+    
+    #merging the datasets
+    df = pd.merge(df,graz_weather_df_upsampled,on='timestamp',how='inner')
     df = df.dropna()
+
     df.index = df['timestamp']
 
     df['is_schoolday'] = df['timestamp'].apply(get_is_schoolday)
@@ -157,7 +159,7 @@ def preprocess(data_path,feature):
     df['year'] = [x.year for x in df['timestamp']]
     df['hour'] = [x.hour for x in df['timestamp']]
 
-    df.to_csv('../../data/preprocessed/'+feature+'_weather.csv',index=False)
+    df.to_csv('../data/preprocessed/'+feature+'_weather'+'.csv',index=False)
 
 
 preprocess(argv[0],argv[1])
