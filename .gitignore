@@ -2,3 +2,4 @@ scs
 notebooks/.ipynb_checkpoints
 notebooks/preprocessing/.ipynb_checkpoints
 notebooks/training/.ipynb_checkpoints
+.idea
